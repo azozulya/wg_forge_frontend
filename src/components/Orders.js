@@ -1,7 +1,7 @@
 import React from "react";
 import ordersArray from '../../data/orders.json';
 import User from './User';
-
+import Utils from "./Utils";
 
 class Orders extends React.Component {
   render() {
@@ -49,18 +49,6 @@ class OrderList extends React.Component {
   }
 }
 
-/**
- * @return {string}
- */
-function DateFormat(UNIX_timestamp) {
-  const date = new Date(UNIX_timestamp * 1000);
-  const AddZero = n => n > 9 ? n : '0' + n;   // DD/MM/YYYY hh:mm:ss
-
-  return `${AddZero(date.getDate())}/${AddZero(date.getMonth() + 1)}/${date.getFullYear()} ${AddZero(date.getHours())}:${AddZero(date.getMinutes())}:${AddZero(date.getSeconds())}`;
-}
-
-
-
 function OrderItem(props){
   const order = props.order;
   const cardHide = n => {
@@ -76,7 +64,7 @@ function OrderItem(props){
     <tr id={`order_${order.id}`}>
       <td className="align-middle"><small>{order.transaction_id}</small></td>
       <td className="text-center align-middle"><User id={order.user_id} /></td>
-      <td className="align-middle">{DateFormat(order.created_at)}</td>
+      <td className="text-center align-middle">{Utils.DateFormat(order.created_at)}</td>
       <td className="text-center align-middle">${order.total}</td>
       <td className="align-middle">{cardHide(order.card_number)}</td>
       <td className="align-middle">{order.card_type}</td>

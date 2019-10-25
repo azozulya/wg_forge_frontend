@@ -1,5 +1,4 @@
 import React from "react";
-import ReactDOM from 'react-dom';
 import Orders from "./components/Orders";
 import 'bootstrap/dist/css/bootstrap.min.css';
 

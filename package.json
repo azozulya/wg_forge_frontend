@@ -2,7 +2,7 @@
   "name": "wg-forge-js-welcome",
   "version": "1.0.0",
   "description": "Starter project for test task Wargaming Forge JS",
-  "main": "app.js",
+  "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server --mode development --hot --colors --progress",
     "build": "webpack --mode production --colors --progress",
@@ -11,11 +11,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/artur-code/wg-forge-js-welcome.git"
+    "url": "git+https://github.com/azozulya/wg-forge-js-welcome.git"
   },
   "license": "Apache-2.0",
   "bugs": {
-    "url": "https://github.com/artur-code/wg-forge-js-welcome/issues"
+    "url": "https://github.com/azozulya/wg-forge-js-welcome/issues"
   },
   "homepage": "https://github.com/artur-code/wg-forge-js-welcome#readme",
   "devDependencies": {
