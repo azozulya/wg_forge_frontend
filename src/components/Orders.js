@@ -1,5 +1,7 @@
 import React from "react";
 import ordersArray from '../../data/orders.json';
+import User from './User';
+
 
 class Orders extends React.Component {
   render() {
@@ -73,7 +75,7 @@ function OrderItem(props){
   return (
     <tr id={`order_${order.id}`}>
       <td className="align-middle"><small>{order.transaction_id}</small></td>
-      <td className="text-center align-middle">{order.user_id}</td>
+      <td className="text-center align-middle"><User id={order.user_id} /></td>
       <td className="align-middle">{DateFormat(order.created_at)}</td>
       <td className="text-center align-middle">${order.total}</td>
       <td className="align-middle">{cardHide(order.card_number)}</td>
