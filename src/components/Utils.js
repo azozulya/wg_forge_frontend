@@ -1,3 +1,4 @@
+import Users from "../../data/users";
 
 class Utils {
   static DateFormat(UNIX_timestamp) {
@@ -6,6 +7,10 @@ class Utils {
 
   static BirthdayFormat(UNIX_timestamp) {
      return dateFormat(UNIX_timestamp);
+  }
+
+  static getUsersIdsByGender(gender) {
+    return Users.filter( user => user.gender === gender ).map( user => user.id );
   }
 }
 

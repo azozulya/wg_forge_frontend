@@ -1,43 +1,40 @@
 import React from "react";
-import ordersArray from '../../data/orders.json';
 import User from './User';
 import Utils from "./Utils";
+import Statistics from "./Statictics";
 
 class Orders extends React.Component {
   render() {
+
     return (
-      <table className="table table-sm table-striped table-bordered table-hover">
+      <table id="orders" className="table table-sm table-striped table-bordered table-hover">
         <thead>
         <tr className="text-center">
-          <th>Transaction ID</th>
-          <th>User Info</th>
-          <th>Order Date</th>
-          <th>Order Amount</th>
-          <th>Card Number</th>
-          <th>Card Type</th>
-          <th>Location</th>
+          <th></th>
+          <th className="align-middle">Transaction ID</th>
+          <th className="align-middle">User Info</th>
+          <th className="align-middle">Order Date</th>
+          <th className="align-middle">Order Amount</th>
+          <th className="align-middle">Card Number</th>
+          <th className="align-middle">Card Type</th>
+          <th className="align-middle">Location</th>
         </tr>
         </thead>
-        <OrderList />
+        <OrderList orders={this.props.orders}/>
+        <tfoot>
+          <Statistics orders={this.props.orders}/>
+        </tfoot>
       </table>
     )
   }
 }
 
-class OrderList extends React.Component {
-  // constructor(props){
-  //   super(props);
-  //   this.orders = props.ordersN;
-  // }
-
-  render() {
-    //const ordersArray = require('../../data/orders.json');
-    const orders = ordersArray.slice(0, 20);
+function OrderList(props){
     let list = [];
 
-    orders.forEach((order, idx) => {
+    props.orders.forEach((order, idx) => {
       list.push(
-        <OrderItem key={idx} order={order}/>
+        <OrderItem key={idx} order={order} i={idx}/>
       );
     });
 
@@ -46,7 +43,6 @@ class OrderList extends React.Component {
         {list}
       </tbody>
     )
-  }
 }
 
 function OrderItem(props){
@@ -62,6 +58,7 @@ function OrderItem(props){
 
   return (
     <tr id={`order_${order.id}`}>
+      <td className="text-center align-middle">{props.i + 1}</td>
       <td className="align-middle"><small>{order.transaction_id}</small></td>
       <td className="text-center align-middle"><User id={order.user_id} /></td>
       <td className="text-center align-middle">{Utils.DateFormat(order.created_at)}</td>
@@ -72,7 +69,5 @@ function OrderItem(props){
     </tr>
   )
 }
-
-
 
 export default Orders;
